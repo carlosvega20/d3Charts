@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>d3Charts Sample</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+     <script type="text/javascript" src="lib/d3.v3.min.js"></script>
+    <script type="text/javascript" src="src/d3Charts.js"></script>
+    <script type="text/javascript">
+
+      $(function() {
+        //Donut
+        $('.donut').d3Charts({
+          shape: {type:'donut',
+                    radius: 72,
+                    tubeWidth: 20
+                  },
+          colors: ['#666666', '#cb0101'],
+          initDataset: [{
+                          'start': 0,
+                          'end': 0,
+                          'index': 1
+                        }, {
+                          'start': 0,
+                          'end': 0,
+                          'index': 2
+                        }],
+            endDataset: [{
+                          'start': 0,
+                          'end': 100,
+                          'index': 1
+                        }, {
+                          'start': 0,
+                          'end': 50,
+                          'index': 2
+                        }]
+        });
+
+        //Bars
+        $('.bars').d3Charts({
+          shape: {type:'bar',
+                    radius: 72,
+                    tubeWidth: 20},
+          width: 400,
+          height: 200,
+          centered: false,
+          colors: '#cb0101',
+          //transformations: 'translate(10, 0) skewX(-22)',
+          initDataset: [{'start': 25}, {'start': 15}, {'start': 5}, {'start': 25}],
+          endDataset: [{'start': 15}, {'start': 5}, {'start': 35}, {'start': 5}]
+        });
+
+        //Pie
+        $('.pie').d3Charts({
+          shape: {type:'pie',
+                    radius: 72,
+                    tubeWidth: 20
+                  },
+          colors: ['#666666', '#cb0101'],
+          initDataset: [{
+                          'start': 0,
+                          'end': 0,
+                          'index': 1
+                        }, {
+                          'start': 60,
+                          'end': 80,
+                          'index': 1
+                        }],
+            endDataset: [{
+                          'start': 0,
+                          'end': 60,
+                          'index': 1
+                        }, {
+                          'start': 60,
+                          'end': 90,
+                          'index': 1
+                        }]
+        });
+
+
+        //API
+        var chartInfo = $('.donut').data('d3Charts');
+        $('.donut').on('click', function(e) {
+          $('.donut').d3Charts('animateTo',
+            [ {
+                'start': 0,
+                'end': 0,
+                'index': 1
+              }, {
+                'start': 0,
+                'end': 0,
+                'index': 2
+              }
+            ]
+          );
+        });
+
+      });
+
+    </script>
+	</head>
+	<body>
+    <div class="donut"></div>
+    <div class="bars"></div>
+    <div class="pie"></div>
+	</body>
+</html>
